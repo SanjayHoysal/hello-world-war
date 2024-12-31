@@ -1,11 +1,12 @@
 pipeline {
      parameters {
-        string(name: 'PERSON', defaultValue: 'Package', description: 'Who should I say hello to?')
+        string(name: 'cmd', defaultValue: 'package', description: 'Who should I say hello to?')
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     agent any
       stages {
         stage('checkout') {
             steps {
+                sh 'rm -rf hello-world-war'
                 sh 'git clone https://github.com/SanjayHoysal/hello-world-war.git'
             }
         }
