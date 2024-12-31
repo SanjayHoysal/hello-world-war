@@ -1,14 +1,15 @@
 pipeline {
     agent any
       stages {
-        stage('Test') {
+        stage('checkout') {
             steps {
-                echo 'Hello World from Stage 1'
+                sh 'git clone https://github.com/SanjayHoysal/hello-world-war.git'
             }
         }
-        stage('Example') {
+        stage('build') {
             steps {
-                echo 'We;cpme to Stage 2'
+                sh 'cd hello-world-war'
+                sh 'mvn clean package'
             }
         }
     }
