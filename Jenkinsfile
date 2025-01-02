@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { Labe; 'Slave1' }
     parameters {
         string(name: 'cmd', defaultValue: 'package', description: 'Maven command to run')
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
