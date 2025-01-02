@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'Slave1' }
     parameters {
         string(name: 'cmd', defaultValue: 'package', description: 'Maven command to run')
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    cp /home/ubuntu/git/hello-world-war/target/hello-world-war-1.0.0.war \
+                    sudo cp /home/ubuntu/git/hello-world-war/target/hello-world-war-1.0.0.war \
                        /opt/apache-tomcat-10.1.34/webapps/
                 '''
             }
